@@ -1,0 +1,29 @@
+[tool.autopep8]
+max_line_length = 120
+ignore = ""
+in-place = true
+recursive = true
+aggressive = 2
+
+[tool.flake8]
+exclude = [
+    "__pycache__/",
+    ".git/",
+    ".venv/",
+    "venv*/",
+    "*/migrations/",
+    "settings.py"
+    ]
+max_line_length = 120
+statistics = true
+count = true
+
+[tool.isort]
+py_version=312
+atomic = true
+line_length = 120
+multi_line_output = 3
+force_grid_wrap = 0
+use_parentheses = True
+include_trailing_comma = True
+skip = ('.bzr', '.direnv', '.eggs', '.git', '.hg', '.mypy_cache', '.nox', '.pants.d', '.svn', '.tox', '.venv', '__pypackages__', '_build', 'buck-out', 'build', 'dist', 'node_modules', 'venv', 'vevn', '.ovpn')

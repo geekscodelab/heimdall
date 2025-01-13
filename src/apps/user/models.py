@@ -1,11 +1,11 @@
 from typing import Any
-from django.utils.translation import gettext_lazy as _
-from django.db import models
-from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser, PermissionsMixin
-)
-from django.contrib.auth.validators import UnicodeUsernameValidator
+
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth.validators import UnicodeUsernameValidator
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+
 from utils.storage import ImageStorage
 
 
@@ -57,6 +57,14 @@ class User(AbstractBaseUser, PermissionsMixin):
         validators=[validate_password])
     is_active = models.BooleanField(
         verbose_name=_("active"),
+        default=True,
+        help_text=_(
+            "Designates whether this user should be treated as active. "
+            "Unselect this instead of deleting accounts."
+        ),
+    )
+    is_staff = models.BooleanField(
+        verbose_name=_("staff"),
         default=True,
         help_text=_(
             "Designates whether this user should be treated as active. "

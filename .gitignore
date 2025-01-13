@@ -6,7 +6,7 @@ __pycache__
 db.sqlite3
 sqlite3.db
 */media/*
-migrations
+static/*
 
 # Backup files # 
 *.bak 
@@ -37,6 +37,7 @@ wheels/
 *.egg 
 *.manifest 
 *.spec 
+*.lock
 
 # Installer logs 
 pip-log.txt 
@@ -91,7 +92,4 @@ venv-prd/
 devdocs
 
 # build files
-/build
-
-# media files
-/media
+build

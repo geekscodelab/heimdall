@@ -1,7 +1,7 @@
 from django.contrib.auth.signals import user_logged_in
+from knox.views import LoginView as KnoxLoginView
 from rest_framework import permissions
 from rest_framework.authtoken.serializers import AuthTokenSerializer
-from knox.views import LoginView as KnoxLoginView
 
 
 class LoginView(KnoxLoginView):

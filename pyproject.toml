@@ -1,29 +1,36 @@
+[project]
+name = "heimdall"
+version = "0.1.0"
+description = "Authentication & Authorization Service"
+authors = [
+    { name = "Milad Moslehikhou",  email="milad.moslehikhou@gmail.com"},
+    { name = "Hesam Ghasemi",  email="s.hesam.ghasemi@gmail.com"}
+]
+license = { text = "MIT License" }
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "django (==4.2.17)",
+    "djangorestframework (==3.15.2)",
+    "drf-spectacular (==0.28.0)",
+    "django-rest-knox (==5.0.2)",
+    "pillow (==11.1.0)",
+]
+
+[tool.poetry]
+
+[tool.poetry.group.dev.dependencies]
+autopep8 = "2.3.1"
+flake8 = "7.1.1"
+isort = "5.13.2"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.autopep8]
 max_line_length = 120
 ignore = ""
 in-place = true
 recursive = true
 aggressive = 2
-
-[tool.flake8]
-exclude = [
-    "__pycache__/",
-    ".git/",
-    ".venv/",
-    "venv*/",
-    "*/migrations/",
-    "settings.py"
-    ]
-max_line_length = 120
-statistics = true
-count = true
-
-[tool.isort]
-py_version=312
-atomic = true
-line_length = 120
-multi_line_output = 3
-force_grid_wrap = 0
-use_parentheses = True
-include_trailing_comma = True
-skip = ('.bzr', '.direnv', '.eggs', '.git', '.hg', '.mypy_cache', '.nox', '.pants.d', '.svn', '.tox', '.venv', '__pypackages__', '_build', 'buck-out', 'build', 'dist', 'node_modules', 'venv', 'vevn', '.ovpn')

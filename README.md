@@ -42,6 +42,7 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install poetry
 poetry install
 pre-commit install
+pre-commit install --hook-type commit-msg
 ```
 
 ### Step 4: Run Migrations and Collect statics

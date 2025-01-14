@@ -41,6 +41,8 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 ```bash
 pip install poetry
 poetry install
+pre-commit install
+pre-commit install --hook-type commit-msg
 ```
 
 ### Step 4: Run Migrations and Collect statics
@@ -70,21 +72,16 @@ accessed at:
 
 This project uses the following tools to maintain code quality:
 
-- **autopep8**: Automatic code formatting.
-- **flake8**: Code linting with detailed error reporting.
-- **isort**: Import sorting.
+- **ruff**: Automatic code formatting and linting.
 
 #### Running Linting and Formatting
 
 ```bash
-# Auto-format code
-poetry run autopep8 --in-place --recursive .
+# Check code quality
+poetry run ruff check
 
-# Run Flake8 for linting
-poetry run flake8
-
-# Sort imports
-poetry run isort .
+# Fix code quality errors
+poetry run ruff check --fix
 ```
 
 ### Contribution

@@ -20,6 +20,7 @@ static/*
 *$py.class 
 
 # Distribution / packaging 
+.ruff_cache/
 .Python build/ 
 develop-eggs/ 
 dist/ 
@@ -84,7 +85,7 @@ venv-prd/
 # mypy 
 .mypy_cache/ 
 
-# Visual Studio Code # 
+# Visual Studio Code
 .vscode
 .history
 

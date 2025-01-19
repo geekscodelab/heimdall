@@ -52,7 +52,7 @@ jobs:
           DATABASE_HOST: 127.0.0.1
           DATABASE_PORT: 5432
         run: |
-          python manage.py migrate
+          poetry run python manage.py migrate
 
       - name: Run Tests
         env:
@@ -63,4 +63,4 @@ jobs:
           DATABASE_PORT: 5432
           REDIS_ADDR: 127.0.0.1
         run: |
-          python manage.py test apps
+          poetry run python manage.py test apps

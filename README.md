@@ -41,8 +41,6 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 ```bash
 pip install poetry
 poetry install
-pre-commit install
-pre-commit install --hook-type commit-msg
 ```
 
 ### Step 4: Run Migrations and Collect statics
@@ -90,8 +88,13 @@ Contributions are welcome! Please follow these steps to contribute:
 
 1. Fork the repository.
 2. Create a new branch for your feature or bugfix.
-3. Commit your changes with clear and descriptive commit messages.
-4. Submit a pull request for review.
+3. Run the following to set up development environment:
+    ```bash
+    pre-commit install
+    pre-commit install --hook-type commit-msg
+    ```
+4. Commit your changes with clear and descriptive commit messages.
+5. Submit a pull request for review.
 
 ### Support
 

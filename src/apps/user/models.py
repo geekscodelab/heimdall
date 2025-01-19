@@ -6,6 +6,7 @@ from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from apps.role.models import Role
 from utils.storage import ImageStorage
 
 
@@ -119,7 +120,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
 
     roles = models.ManyToManyField(
-        "Role",
+        Role,
         related_name="users",
         blank=True,
     )

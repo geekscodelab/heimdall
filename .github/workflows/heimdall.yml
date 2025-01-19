@@ -12,47 +12,55 @@ jobs:
 
     strategy:
       matrix:
-        python-version: [3.10.12]
+        python-version: [ 3.10.12 ]
+
+    defaults:
+      run:
+        working-directory: ./src
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Install Dependencies
-      run: |
-        pip3 install poetry
-        poetry install
+      - name: Install Dependencies
+        run: |
+          pip3 install poetry
+          poetry install
 
-    - name: Set up Django Environment Variables
-      run: |
-        echo "DATABASE_NAME=test_db" >> $GITHUB_ENV
-        echo "DATABASE_USER=test_user" >> $GITHUB_ENV
-        echo "DATABASE_PASSWORD=test_password" >> $GITHUB_ENV
-        echo "DATABASE_HOST=127.0.0.1" >> $GITHUB_ENV
-        echo "DATABASE_PORT=5432" >> $GITHUB_ENV
+      - name: Set up Django Environment Variables
+        run: |
+          echo "DATABASE_NAME=test_db" >> $GITHUB_ENV
+          echo "DATABASE_USER=test_user" >> $GITHUB_ENV
+          echo "DATABASE_PASSWORD=test_password" >> $GITHUB_ENV
+          echo "DATABASE_HOST=127.0.0.1" >> $GITHUB_ENV
+          echo "DATABASE_PORT=5432" >> $GITHUB_ENV
 
-    - name: Run Django Migrations
-      env:
-        DATABASE_NAME: test_db
-        DATABASE_USER: test_user
-        DATABASE_PASSWORD: test_password
-        DATABASE_HOST: 127.0.0.1
-        DATABASE_PORT: 5432
-      run: |
-        python manage.py migrate
+      - name: Run Lint
+        run: |
+          poetry run ruff check
 
-    - name: Run Tests
-      env:
-        DATABASE_NAME: test_db
-        DATABASE_USER: test_user
-        DATABASE_PASSWORD: test_password
-        DATABASE_HOST: 127.0.0.1
-        DATABASE_PORT: 5432
-        REDIS_ADDR: 127.0.0.1
-      run: |
-        python manage.py test apps
+      - name: Run Django Migrations
+        env:
+          DATABASE_NAME: test_db
+          DATABASE_USER: test_user
+          DATABASE_PASSWORD: test_password
+          DATABASE_HOST: 127.0.0.1
+          DATABASE_PORT: 5432
+        run: |
+          python manage.py migrate
+
+      - name: Run Tests
+        env:
+          DATABASE_NAME: test_db
+          DATABASE_USER: test_user
+          DATABASE_PASSWORD: test_password
+          DATABASE_HOST: 127.0.0.1
+          DATABASE_PORT: 5432
+          REDIS_ADDR: 127.0.0.1
+        run: |
+          python manage.py test apps

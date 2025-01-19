@@ -32,7 +32,7 @@ INSTALLED_APPS = [
 
     # our apps
     "apps.permission",
-    "apps.group",
+    "apps.role",
     "apps.user",
 ]
 

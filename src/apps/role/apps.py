@@ -1,10 +1,10 @@
 from django.apps import AppConfig
 
 
-class GroupConfig(AppConfig):
+class RoleConfig(AppConfig):
     """
-    Configuration class for the group application.
+    Configuration class for the role application.
     """
 
     default_auto_field = "django.db.models.BigAutoField"
-    name = "apps.group"
+    name = "apps.role"

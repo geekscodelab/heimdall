@@ -15,6 +15,7 @@ dependencies = [
     "drf-spectacular (==0.28.0)",
     "django-rest-knox (==5.0.2)",
     "pillow (==11.1.0)",
+    "cryptography (>=44.0.0,<45.0.0)",
 ]
 
 [tool.poetry]

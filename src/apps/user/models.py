@@ -118,6 +118,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         null=True,
     )
 
+    roles = models.ManyToManyField(
+        "Role",
+        related_name="users",
+        blank=True,
+    )
+
     objects = UserManager()
 
     USERNAME_FIELD = "username"

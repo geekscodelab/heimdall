@@ -30,6 +30,8 @@ requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
+line-length = 120
+indent-width = 4
 exclude = [
     ".git",
     ".git-rewrite",
@@ -48,16 +50,27 @@ exclude = [
     "build",
     "dist",
     "venv",
+    "migrations",
+    "manage.py",
 ]
-line-length = 120
-indent-width = 4
 
 [tool.ruff.lint]
-ignore = [
-    "E203",  # Whitespace before ':'
-]
+select = ["ALL"]
 fixable = ["ALL"]
-extend-select = ["I"]  # Enable isort-style import sorting
+ignore = [
+    "D203", # 1 blank line required before class docstring
+    "D212", # Multi-line docstring summary should start at the second line
+    "D100", # Missing docstring in public module
+    "D104", # Missing docstring in public package
+    "D200", # One-line docstring should fit on one line with quotes
+    "E203", # Whitespace before ':'
+    "INP001",
+    "ANN401",
+
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10 # Cyclomatic complexity threshold
 
 [tool.ruff.format]
 quote-style = "double"
